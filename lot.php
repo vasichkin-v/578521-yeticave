@@ -7,6 +7,35 @@ $bets = [
     ['name' => 'Евгений', 'price' => 10500, 'ts' => strtotime('-' . rand(25, 50) .' hour')],
     ['name' => 'Семён', 'price' => 10000, 'ts' => strtotime('last week')]
 ];
+
+
+/*
+ * Функция возвращает время сделанной ставки
+ *
+ * @param ts - время сделанной ставки в миллисикундаж
+ * @return - время в человеческом виде
+ *
+ * */
+function getDateof ($ts)
+{
+    $res = strtotime('now') - $ts;
+
+    if ($res > 86400)
+    {
+        $res =  date("d.m.y в H:i", $ts);
+    }
+    elseif ($res >= 3600 && $res < 86400)
+    {
+        $res =  $res / 3600 . " часов назад";
+    }
+    elseif ($res < 3600)
+    {
+        $res =  $res / 60 . " минут назад";
+    }
+
+    return $res;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -111,11 +140,14 @@ $bets = [
                     <h3>История ставок (<span>4</span>)</h3>
                     <!-- заполните эту таблицу данными из массива $bets-->
                     <table class="history__list">
+                        <?foreach ($bets as $v):?>
                         <tr class="history__item">
-                            <td class="history__name"><!-- имя автора--></td>
-                            <td class="history__price"><!-- цена--> р</td>
-                            <td class="history__time"><!-- дата в человеческом формате--></td>
+                            <td class="history__name"><?=$v["name"]?></td>
+                            <td class="history__price"><?=$v["price"]?> р</td>
+                            <td class="history__time"><?=getDateof($v["ts"])?></td>
                         </tr>
+                        <?endforeach;?>
+
                     </table>
                 </div>
             </div>
