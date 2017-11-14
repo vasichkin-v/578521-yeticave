@@ -55,42 +55,48 @@ $categorys = [
 
 //Массив с лотами
 $lots = [
-    "2014 Rossignol District Snowboard" => [
+    [
+        "title" => "2014 Rossignol District Snowboard",
         "category" => "Доски и лыжи",
         "price" => "10999",
         "url_img" => "img/lot-1.jpg",
         "url" => "lot.html",
         "time" => $lot_time_remaining
     ],
-    "DC Ply Mens 2016/2017 Snowboard" => [
+    [
+        "title" => "DC Ply Mens 2016/2017 Snowboard",
         "category" => "Доски и лыжи",
         "price" => "159999",
         "url_img" => "img/lot-2.jpg",
         "url" => "lot.html",
         "time" => $lot_time_remaining
     ],
-    "Крепления Union Contact Pro 2015 года размер L/XL" => [
+    [
+        "title" => "Крепления Union Contact Pro 2015 года размер L/XL",
         "category" => "Крепления",
         "price" => "8000",
         "url_img" => "img/lot-3.jpg",
         "url" => "lot.html",
         "time" => $lot_time_remaining
     ],
-    "Ботинки для сноуборда DC Mutiny Charocal" => [
+    [
+        "title" => "Ботинки для сноуборда DC Mutiny Charocal",
         "category" => "Ботинки",
         "price" => "10999",
         "url_img" => "img/lot-4.jpg",
         "url" => "lot.html",
         "time" => $lot_time_remaining
     ],
-    "Куртка для сноуборда DC Mutiny Charocal" => [
+    [
+        "title" => "Куртка для сноуборда DC Mutiny Charocal",
         "category" => "Одежда",
         "price" => "7500",
         "url_img" => "img/lot-5.jpg",
         "url" => "lot.html",
         "time" => $lot_time_remaining
     ],
-    "Маска Oakley Canopy" => [
+    [
+        "title" => "Маска Oakley Canopy",
         "category" => "Разное",
         "price" => "5400",
         "url_img" => "img/lot-6.jpg",
@@ -123,7 +129,7 @@ $lots = [
         <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
-        <!-- здесь должен быть PHP код для показа аватара пользователя -->
+            <!-- здесь должен быть PHP код для показа аватара пользователя -->
             <? if ($is_auth):?>
                 <div class="user-menu__image">
                     <img src="<?=$user_avatar?>" width="40" height="40" alt="Пользователь">
@@ -151,9 +157,9 @@ $lots = [
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <?foreach ($categorys as $v):?>
-            <li class="promo__item promo__item--<?=$v['class']?>">
-                <a class="promo__link" href="<?=$v['url']?>"><?=$v['title']?></a>
-            </li>
+                <li class="promo__item promo__item--<?=$v['class']?>">
+                    <a class="promo__link" href="<?=$v['url']?>"><?=$v['title']?></a>
+                </li>
             <?endforeach;?>
         </ul>
     </section>
@@ -162,7 +168,7 @@ $lots = [
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <? foreach ($lots as $k => $v):?>
+            <? foreach ($lots as $v):?>
                 <li class="lots__item lot">
 
                     <div class="lot__image">
@@ -171,7 +177,7 @@ $lots = [
 
                     <div class="lot__info">
                         <span class="lot__category"><?=$v["category"]?></span>
-                        <h3 class="lot__title"><a class="text-link" href="<?=$v['url']?>"><?=$k?></a></h3>
+                        <h3 class="lot__title"><a class="text-link" href="<?=$v['url']?>"><?=$v["title"]?></a></h3>
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
