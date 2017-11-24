@@ -7,10 +7,10 @@ $user_avatar = 'img/user.jpg';
 // устанавливаем часовой пояс в Московское время
 date_default_timezone_set('Europe/Moscow');
 
-<<<<<<< Updated upstream
+
 // записать в эту переменную оставшееся время в этом формате (ЧЧ:ММ)
 $lot_time_remaining = "00:00";
-=======
+
 $mainContent = getTplContent('layout', [
         "title"         => "YetiCave::Главная",
         "is_auth"       => $is_auth,
@@ -20,7 +20,6 @@ $mainContent = getTplContent('layout', [
         "categorys" => $categorys
 
 ]);
->>>>>>> Stashed changes
 
 // временная метка для полночи следующего дня
 $tomorrow = strtotime('tomorrow midnight');
