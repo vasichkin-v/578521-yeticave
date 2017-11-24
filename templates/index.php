@@ -1,8 +1,15 @@
+<?
+/*
+ * @var $data array - массив с данными которые выводятся в шаблоне (Список категорий и лоты)
+ *
+ * */
+?>
+
 <section class="promo">
     <h2 class="promo__title">Нужен стафф для катки?</h2>
     <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
     <ul class="promo__list">
-        <?foreach ($categorys as $v):?>
+        <?foreach ($data["categorys"] as $v):?>
             <li class="promo__item promo__item--<?=$v['class']?>">
                 <a class="promo__link" href="<?=$v['url']?>"><?=$v['title']?></a>
             </li>
@@ -14,7 +21,7 @@
         <h2>Открытые лоты</h2>
     </div>
     <ul class="lots__list">
-        <? foreach ($lots as $v):?>
+        <? foreach ($data["lots"] as $v):?>
             <li class="lots__item lot">
 
                 <div class="lot__image">

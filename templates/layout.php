@@ -1,13 +1,18 @@
+<?
+/*
+ * @var $data array - массив с данными которые выводятся в шаблоне.
+ *
+ * */
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><?=$title?></title>
+    <title><?=$data["title"]?></title>
     <link href="css/normalize.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
 <header class="main-header">
     <div class="main-header__container container">
         <h1 class="visually-hidden">YetiCave</h1>
@@ -22,12 +27,12 @@
 
         <nav class="user-menu">
             <!-- здесь должен быть PHP код для показа аватара пользователя -->
-            <? if ($is_auth):?>
+            <? if ($data["is_auth"]):?>
                 <div class="user-menu__image">
-                    <img src="<?=$user_avatar?>" width="40" height="40" alt="Пользователь">
+                    <img src="<?=$data['user_avatar']?>" width="40" height="40" alt="Пользователь">
                 </div>
                 <div class="user-menu__logged">
-                    <p><?=$user_name?></p>
+                    <p><?=$data["user_name"]?></p>
                 </div>
             <? else:?>
                 <ul class="user-menu__list">
@@ -43,30 +48,17 @@
     </div>
 </header>
 <main class="container">
-    <?=$tplContent?>
+    <?=$data["tplContent"]?>
 </main>
 
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
+            <?foreach ($data['categorys'] as $v):?>
             <li class="nav__item">
-                <a href="all-lots.html">Доски и лыжи</a>
+                <a href="<?=$v['url']?>"><?=$v['title']?></a>
             </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Крепления</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Ботинки</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Одежда</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Инструменты</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Разное</a>
-            </li>
+            <?endforeach;?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
@@ -105,6 +97,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>
