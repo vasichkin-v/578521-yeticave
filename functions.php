@@ -1,6 +1,6 @@
-<?
+<?php
 
-/*
+/**
  * Функция возвращает содержимое шаблона
  * @param  string $tpl_name - имя шаблона
  * @param  array $data - Данные передаваемые в шаблон
@@ -11,7 +11,7 @@ function getTplContent ($tpl_name, $data) {
 
     $tplContent = "";
 
-    $tpl_path = "templates/" . $tpl_name . ".php";
+    $tpl_path = "templates/" . $tpl_name;
 
     if (file_exists($tpl_path))
     {
