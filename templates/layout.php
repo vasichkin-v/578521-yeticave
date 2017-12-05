@@ -1,5 +1,5 @@
-<?
-/*
+<?php
+/**
  * @var $data array - массив с данными которые выводятся в шаблоне.
  *
  * */
@@ -27,14 +27,14 @@
 
         <nav class="user-menu">
             <!-- здесь должен быть PHP код для показа аватара пользователя -->
-            <? if ($data["is_auth"]):?>
+            <?php if ($data["is_auth"]):?>
                 <div class="user-menu__image">
                     <img src="<?=$data['user_avatar']?>" width="40" height="40" alt="Пользователь">
                 </div>
                 <div class="user-menu__logged">
                     <p><?=$data["user_name"]?></p>
                 </div>
-            <? else:?>
+            <?php else:?>
                 <ul class="user-menu__list">
                     <li class="user-menu__item">
                         <a href="#">Регистрация</a>
@@ -43,22 +43,19 @@
                         <a href="#">Вход</a>
                     </li>
                 </ul>
-            <? endif;?>
+            <?php endif;?>
         </nav>
     </div>
 </header>
-<main class="container">
-    <?=$data["tplContent"]?>
-</main>
-
+<?=$data["tplContent"]?>
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <?foreach ($data['categorys'] as $v):?>
+            <?php foreach ($data['categorys'] as $v):?>
             <li class="nav__item">
                 <a href="<?=$v['url']?>"><?=$v['title']?></a>
             </li>
-            <?endforeach;?>
+            <?php endforeach;?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
