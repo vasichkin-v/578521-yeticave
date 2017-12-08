@@ -55,7 +55,7 @@ if( array_key_exists($_GET["lot_num"], $lots)  )
         "user_name"          => $user_name,
         "tplContent"         => $tplContent,
         "categorys"          => $categorys,
-        "cls_main_container" => ' ' // Перепишим класс у контейнера main
+        "cls_main_container" => '' // Перепишим класс у контейнера main
     ]);
 
 }

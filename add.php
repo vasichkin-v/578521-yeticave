@@ -61,11 +61,13 @@ else
 $tplContent = getTplContent($tplName, $data);
 
 $mainContent = getTplContent('layout.php', [
-    "title"         => "Добавление лота",
-    "is_auth"       => $is_auth,
-    "user_avatar"   => $user_avatar,
-    "user_name"     => $user_name,
-    "tplContent"    => $tplContent,
-    "categorys" => $categorys
+    "title"              => "Добавление лота",
+    "is_auth"            => $is_auth,
+    "user_avatar"        => $user_avatar,
+    "user_name"          => $user_name,
+    "tplContent"         => $tplContent,
+    "categorys"          => $categorys,
+    "cls_main_container" => '' // Перепишим класс у контейнера main
+
 ]);
 print ($mainContent);
