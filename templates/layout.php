@@ -16,7 +16,7 @@
 <header class="main-header">
     <div class="main-header__container container">
         <h1 class="visually-hidden">YetiCave</h1>
-        <a class="main-header__logo">
+        <a href="/" class="main-header__logo">
             <img src="img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
         </a>
         <form class="main-header__search" method="get" action="https://echo.htmlacademy.ru">
@@ -47,7 +47,17 @@
         </nav>
     </div>
 </header>
-<?=$data["tplContent"]?>
+<?
+    $cls_main_container = 'container';
+    if( isset($data["cls_main_container"]) )
+    {
+        $cls_main_container = $data["cls_main_container"];
+    }
+?>
+<main class="<?=$cls_main_container?>">
+    <?=$data["tplContent"]?>
+</main>
+
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">

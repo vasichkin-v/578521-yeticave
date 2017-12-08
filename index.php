@@ -1,6 +1,7 @@
 <?php
 
 require_once 'data.php';
+require_once 'data_lots.php';
 require_once 'functions.php';
 
 $tplContent = getTplContent('index.php',[
