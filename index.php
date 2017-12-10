@@ -1,12 +1,12 @@
 <?php
 
 require_once 'data.php';
-require_once 'data_lots.php';
+require_once 'data_lot.php';
 require_once 'functions.php';
 
 $tplContent = getTplContent('index.php',[
     "categorys" => $categorys,
-    "lots"      => $lots
+    "lot"       => $lot
 ]);
 
 $mainContent = getTplContent('layout.php', [
@@ -15,7 +15,7 @@ $mainContent = getTplContent('layout.php', [
     "user_avatar"   => $user_avatar,
     "user_name"     => $user_name,
     "tplContent"    => $tplContent,
-    "categorys" => $categorys
+    "categorys"     => $categorys
 ]);
 
 print ($mainContent);

@@ -6,16 +6,24 @@ $data = [];
 
 if ($_POST)
 {
-    $form_fields = ['lot-name', 'category','message','lot-rate','lot-step','lot-date'];
+    $form_fields = ['lot-name','category','message','lot-rate','lot-step','lot-date'];
     $form_fields_error = [];
+
+
 
     foreach ($_POST as $k => $v)
     {
-        if (in_array($k, $form_fields) && empty($v) )
+        if (
+               in_array($k, $form_fields)
+            && empty(trim($v)) && $k != 'lot-rate'
+            || $v == 'Выберите категорию'
+            || ( $k == 'lot-rate' || $k == 'lot-step') && ( empty(trim($v)) || (int)$v < 0 )
+        )
         {
             $form_fields_error[] = $k;
         }
     }
+
 
     if(empty($_FILES['image']['name']))
     {
@@ -29,7 +37,11 @@ if ($_POST)
         $finfo      = finfo_open(FILEINFO_MIME_TYPE);
         $finfo_type = finfo_file($finfo, $path_img);
 
-        if ($finfo_type == "image/png" || $finfo_type == "image/jpg" || $finfo_type == "image/gif")
+        if (
+               $finfo_type == "image/png"
+            || $finfo_type == "image/jpeg"
+            || $finfo_type == "image/gif"
+        )
         {
             if( !move_uploaded_file($path_img, $_SERVER['DOCUMENT_ROOT']. "/img/uploads/" .  $name_img) )
             {
@@ -46,10 +58,14 @@ if ($_POST)
     $data += ['form_fields' => $form_fields, 'form_fields_error' => $form_fields_error];
 }
 
-$data += ["categorys" => $categorys];
+
+$data += [
+    "categorys" => $categorys,
+    "bets"      => $bets
+];
 
 
-if(!isset($data['form_fields_error']) ||  !empty($data['form_fields_error']))
+if( !isset($data['form_fields_error']) ||  !empty($data['form_fields_error']))
 {
     $tplName = 'add-lot.php';
 }

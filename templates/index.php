@@ -22,7 +22,7 @@
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <? foreach ($data["lots"] as $v):?>
+            <? foreach ($data["lot"] as $v):?>
                 <li class="lots__item lot">
 
                     <div class="lot__image">
