@@ -904,6 +904,9 @@ input:invalid .form__error{
   width: 113px;
   height: 113px;
 }
+.form__item--uploaded .preview {
+  border: 1px solid #f84646;
+}
 
 .preview__img img {
   width: 100%;

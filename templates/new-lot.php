@@ -8,39 +8,39 @@
     </ul>
 </nav>
 <section class="lot-item container">
-    <h2><?=$data['lot']['title']?></h2>
+    <h2><?=$_POST['lot-name']?></h2>
     <div class="lot-item__content">
         <div class="lot-item__left">
             <div class="lot-item__image">
-                <img src="<?=$data['lot']['url_img']?>" width="730" height="548" alt="Сноуборд">
+                <img src="<?=htmlspecialchars($_POST['path_img'])?>" width="730" height="548" alt="<?=htmlspecialchars($_POST['category'])?>">
             </div>
-            <p class="lot-item__category">Категория: <span><?=$data['lot']['category']?></span></p>
-            <p class="lot-item__description"><?=$data['lot']['desc']?></p>
+            <p class="lot-item__category">Категория: <span><?=htmlspecialchars($_POST['category'])?></span></p>
+            <p class="lot-item__description"><?=htmlspecialchars($_POST['message'])?></p>
         </div>
         <div class="lot-item__right">
             <div class="lot-item__state">
                 <div class="lot-item__timer timer">
-                    <?=$data['lot']['time']?>
+                    10:54:12
                 </div>
                 <div class="lot-item__cost-state">
                     <div class="lot-item__rate">
                         <span class="lot-item__amount">Текущая цена</span>
-                        <span class="lot-item__cost"><?=$data['lot']['price']?></span>
+                        <span class="lot-item__cost"><?=htmlspecialchars($_POST['lot-rate'])?> p</span>
                     </div>
                     <div class="lot-item__min-cost">
-                        Мин. ставка <span>12 000 р</span>
+                        Мин. ставка <span><?= htmlspecialchars((int)$_POST['lot-rate']) + htmlspecialchars((int)$_POST['lot-step'])?> р</span>
                     </div>
                 </div>
                 <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
                     <p class="lot-item__form-item">
                         <label for="cost">Ваша ставка</label>
-                        <input id="cost" type="number" name="cost" placeholder="12 000">
+                        <input id="cost" type="number" name="cost" placeholder="<?= htmlspecialchars((int)$_POST['lot-rate']) + htmlspecialchars((int)$_POST['lot-step'])?>">
                     </p>
                     <button type="submit" class="button">Сделать ставку</button>
                 </form>
             </div>
             <div class="history">
-                <h3>История ставок (<span><?=count($data['bets'])?></span>)</h3>
+                <h3>История ставок (<span><?= count($data['bets'])?></span>)</h3>
                 <!-- заполните эту таблицу данными из массива $bets-->
                 <table class="history__list">
                     <?foreach ($data['bets'] as $v):?>
@@ -50,6 +50,7 @@
                             <td class="history__time"><?=getDateOf($v["ts"])?></td>
                         </tr>
                     <?endforeach;?>
+
                 </table>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * Функция возвращает содержимое шаблона
@@ -7,15 +7,13 @@
  * @return string - Контент страницы в html
  *
  * */
-function getTplContent ($tpl_name, $data) {
+function getTplContent ($tpl_name = "", $data) {
 
-    $tplContent = "";
 
     $tpl_path = "templates/" . $tpl_name;
 
     if (file_exists($tpl_path))
     {
-        $data;
         ob_start();
         require_once $tpl_path;
 
@@ -23,4 +21,31 @@ function getTplContent ($tpl_name, $data) {
     }
 
     return $tplContent;
+}
+
+/**
+ * Функция возвращает время сделанной ставки
+ *
+ * @param ts - время сделанной ставки в миллисикундаж
+ * @return - время в человеческом виде
+ *
+ * */
+function getDateOf ($ts)
+{
+    $res = strtotime('now') - $ts;
+
+    if ($res > 86400)
+    {
+        $res =  date("d.m.y в H:i", $ts);
+    }
+    elseif ($res >= 3600 && $res < 86400)
+    {
+        $res =  $res / 3600 . " часов назад";
+    }
+    elseif ($res < 3600)
+    {
+        $res =  $res / 60 . " минут назад";
+    }
+
+    return $res;
 }
