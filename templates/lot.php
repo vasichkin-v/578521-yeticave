@@ -32,8 +32,7 @@
                     </div>
                 </div>
                 <?php if (!getStatusRate($data['my_rates'], $_GET['lot_num'])):?>
-                    <form class="lot-item__form" action="/mylots.php" method="post">
-                        <input type="hidden" name="lot_id" value="<?=isset($_GET['lot_num'])?$_GET['lot_num']:''?>">
+                    <form class="lot-item__form" action="<?=$_SERVER['REQUEST_URI']?>" method="post">
                         <p class="lot-item__form-item">
                             <label for="cost">Ваша ставка</label>
                             <input id="cost" type="number" name="cost" placeholder="<?=$data['lot']['price'] + 1000?> р">
