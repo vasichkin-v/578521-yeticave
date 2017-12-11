@@ -25,19 +25,22 @@
                 <div class="lot-item__cost-state">
                     <div class="lot-item__rate">
                         <span class="lot-item__amount">Текущая цена</span>
-                        <span class="lot-item__cost"><?=$data['lot']['price']?></span>
+                        <span class="lot-item__cost"><?=$data['lot']['price']?> р</span>
                     </div>
                     <div class="lot-item__min-cost">
-                        Мин. ставка <span>12 000 р</span>
+                        Мин. ставка <span><?=$data['lot']['price']?> р</span>
                     </div>
                 </div>
-                <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
-                    <p class="lot-item__form-item">
-                        <label for="cost">Ваша ставка</label>
-                        <input id="cost" type="number" name="cost" placeholder="12 000">
-                    </p>
-                    <button type="submit" class="button">Сделать ставку</button>
-                </form>
+                <?php if (!getStatusRate($data['my_rates'], $_GET['lot_num'])):?>
+                    <form class="lot-item__form" action="/mylots.php" method="post">
+                        <input type="hidden" name="lot_id" value="<?=isset($_GET['lot_num'])?$_GET['lot_num']:''?>">
+                        <p class="lot-item__form-item">
+                            <label for="cost">Ваша ставка</label>
+                            <input id="cost" type="number" name="cost" placeholder="<?=$data['lot']['price'] + 1000?> р">
+                        </p>
+                        <button type="submit" class="button">Сделать ставку</button>
+                    </form>
+                <?php endif;?>
             </div>
             <div class="history">
                 <h3>История ставок (<span><?=count($data['bets'])?></span>)</h3>
