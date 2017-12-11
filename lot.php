@@ -10,8 +10,9 @@ if( array_key_exists($_GET["lot_num"], $lot)  )
 {
     $tplContent = getTplContent('lot.php',[
         "categorys" => $categorys,
-        "lot"      => $lot[$_GET["lot_num"]],
-        "bets"      => $bets
+        "lot"       => $lot[$_GET["lot_num"]],
+        "bets"      => $bets,
+        "my_rates"  => !empty($_COOKIE['my_rates']) ? unserialize($_COOKIE['my_rates']):'',
     ]);
 
     $mainContent = getTplContent('layout.php', [
