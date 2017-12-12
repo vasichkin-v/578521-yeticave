@@ -8,6 +8,7 @@
     <title>Error::404</title>
 </head>
 <body>
+    //Да да - инлайт стили - это плохо:)
     <div style="text-align: center; margin-top: 150px;font-size: 30px; color: red;">404</div>
 </body>
 </html>
