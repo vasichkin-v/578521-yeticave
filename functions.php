@@ -24,6 +24,28 @@ function getTplContent ($tpl_name = "", $data) {
 }
 
 /**
+ * Функция ищит пользователя по email
+ *
+ * @param string email - email полученный от пользователя
+ *
+ * @param array $arr_users - массив пользователь
+ *
+ * @return array - данный пользователя
+ *
+ */
+function hasUser($email, $arr_users)
+{
+    foreach ($arr_users as $v)
+    {
+        if($v['email'] == $email)
+        {
+            return $v;
+            break;
+        }
+    }
+}
+
+/**
  * Функция возвращает время сделанной ставки
  *
  * @param ts - время сделанной ставки в миллисикундаж

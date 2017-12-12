@@ -27,12 +27,13 @@
 
         <nav class="user-menu">
             <!-- здесь должен быть PHP код для показа аватара пользователя -->
-            <?php if ($data["is_auth"]):?>
+            <?php if( isset($_SESSION['user']) ):?>
                 <div class="user-menu__image">
-                    <img src="<?=$data['user_avatar']?>" width="40" height="40" alt="Пользователь">
+                    <img src="img/user.jpg" width="40" height="40" alt="<?=$_SESSION['user']['name']?>">
                 </div>
                 <div class="user-menu__logged">
-                    <p><?=$data["user_name"]?></p>
+                    <p><?=$_SESSION['user']['name']?></p>
+                    <a href="/logout.php" class="">выход</a>
                 </div>
             <?php else:?>
                 <ul class="user-menu__list">
@@ -40,7 +41,7 @@
                         <a href="#">Регистрация</a>
                     </li>
                     <li class="user-menu__item">
-                        <a href="#">Вход</a>
+                        <a href="login.php">Вход</a>
                     </li>
                 </ul>
             <?php endif;?>
