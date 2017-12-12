@@ -7,8 +7,8 @@
  * @return string - Контент страницы в html
  *
  * */
-function getTplContent ($tpl_name = "", $data) {
-
+function getTplContent ($tpl_name = "", $data)
+{
 
     $tpl_path = "templates/" . $tpl_name;
 
@@ -62,12 +62,37 @@ function getDateOf ($ts)
     }
     elseif ($res >= 3600 && $res < 86400)
     {
-        $res =  $res / 3600 . " часов назад";
+        $res = number_format((int)$res / 3600, 0, '.','') . " часов назад";
     }
     elseif ($res < 3600)
     {
-        $res =  $res / 60 . " минут назад";
+        $res = number_format((int)$res / 60, 0, '.','') . " минут назад";
     }
 
     return $res;
+}
+
+
+/**
+ * Функция проверяет, сделана ли ставка по выбраному лоту
+ *
+ * @param array $rates - массив сделанных ставок
+ *
+ * @param string $id - индекс текущего лота
+ *
+ * @return bool - возвращает true/false
+ *
+ **/
+
+function getStatusRate($rates, $id)
+{
+    $has_rate = false;
+
+
+    if(isset($rates['rate'.$id]))
+    {
+        $has_rate = true;
+    }
+
+    return $has_rate;
 }
