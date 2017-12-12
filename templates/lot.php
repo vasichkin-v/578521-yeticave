@@ -31,7 +31,7 @@
                         Мин. ставка <span><?=$data['lot']['price']?> р</span>
                     </div>
                 </div>
-                <?php if (!getStatusRate($data['my_rates'], $_GET['lot_num'])):?>
+                <?php if (!getStatusRate($data['my_rates'], $_GET['lot_num']) && isset($_SESSION['user'])):?>
                     <form class="lot-item__form" action="<?=$_SERVER['REQUEST_URI']?>" method="post">
                         <p class="lot-item__form-item">
                             <label for="cost">Ваша ставка</label>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once 'data.php';
 require_once 'data_lot.php';
 require_once 'functions.php';
@@ -70,9 +70,6 @@ if( array_key_exists($_GET["lot_num"], $lot)  )
 
     $mainContent = getTplContent('layout.php', [
         "title"              => $lot[$_GET["lot_num"]]['title'],
-        "is_auth"            => $is_auth,
-        "user_avatar"        => $user_avatar,
-        "user_name"          => $user_name,
         "tplContent"         => $tplContent,
         "categorys"          => $categorys,
         "cls_main_container" => '' // Перепишим класс у контейнера main
